@@ -41,8 +41,11 @@
     "name": "Wolfblanc Architects",
     "url": "https://wolfblanc.se",
     "sameAs": [
-      "https://wolfblanc.com","https://wolfblanc.es","https://wolfblanc.gr",
-      "https://instagram.com/wolfblanc.architects","https://linkedin.com/company/wolfblanc"
+      "https://wolfblanc.com",
+      "https://wolfblanc.es",
+      "https://wolfblanc.gr",
+      "https://instagram.com/wolfblanc.architects",
+      "https://linkedin.com/company/wolfblanc"
     ],
     "address": {
       "@type": "PostalAddress",
@@ -111,27 +114,33 @@
       padding:0 2rem;transition:background .6s
     }
     nav.scrolled{background:var(--nav-bg);backdrop-filter:blur(24px)}
-    .nav-logo{font-size:.85rem;font-weight:200;letter-spacing:.25em;color:var(--text-primary)}
+    .nav-logo{font-size:.85rem;font-weight:200;letter-spacing:.25em;color:var(--text-primary);white-space:nowrap}
     .nav-logo:hover{color:var(--accent)}
-    .nav-right{display:flex;align-items:center;gap:24px}
+    .nav-right{display:flex;align-items:center;gap:20px}
     .nav-links{display:flex;align-items:center;gap:24px}
     .nav-link{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:300;color:var(--text-secondary);transition:color .3s}
     .nav-link:hover,.nav-link.active{color:var(--accent)}
     .nav-mobile-link{display:none;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:300;color:var(--text-secondary)}
+    .language-switch{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);padding:3px}
+    .lang-btn{background:transparent;border:0;color:var(--text-secondary);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:4px 6px;cursor:none;transition:color .3s}
+    .lang-btn:hover,.lang-btn.active{color:var(--accent)}
     .theme-btn{background:none;border:none;cursor:none;color:var(--text-secondary);display:flex;align-items:center;padding:8px;transition:color .3s}
     .theme-btn:hover{color:var(--text-primary)}
     @media(max-width:768px){
-      nav{padding:0 1.5rem}
+      nav{padding:0 1.1rem}
       .nav-links{display:none}
       .nav-mobile-link{display:block}
+      .nav-right{gap:10px}
+      .nav-mobile-link{font-size:.55rem;letter-spacing:.14em}
+      .nav-logo{font-size:.72rem;letter-spacing:.18em}
     }
 
     /* Layout */
     .wrap{max-width:960px;margin:0 auto;padding:0 24px}
     .section{padding:100px 0}
     @media(min-width:769px){.section{padding:160px 0}}
-    .section-reveal{opacity:0;transform:translateY(15px);transition:opacity .8s ease,transform .8s ease;will-change:transform,opacity}
-    .section-reveal.visible{opacity:1;transform:translateY(0);will-change:auto}
+    .section-reveal{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+    .section-reveal.visible{opacity:1;transform:none}
 
     /* Hero */
     .hero{height:100vh;display:flex;flex-direction:column;justify-content:center}
@@ -152,8 +161,7 @@
     .text-link:hover{color:var(--text-primary)}
 
     /* Hero word animation */
-    .word{display:inline-block;margin-right:.2em;opacity:0;animation:wordIn .5s ease forwards}
-    @keyframes wordIn{to{opacity:1}}
+    .word{display:inline-block;margin-right:.24em;opacity:1}
 
     /* Studio */
     .studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
@@ -167,18 +175,24 @@
     .studio-img:hover img{filter:grayscale(0)}
 
     /* Services */
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
     .service-row{
-      border-bottom:1px solid var(--line);
-      display:flex;flex-direction:column;padding:32px 0;gap:8px;
-      transition:border-color .3s
+      background:var(--bg);
+      min-height:300px;
+      padding:32px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:24px;
+      transition:border-color .3s,background .3s
     }
-    @media(min-width:769px){.service-row{flex-direction:row;justify-content:space-between;align-items:baseline}}
-    .service-row:hover{border-color:rgba(0,0,0,.3)}
-    html.dark .service-row:hover{border-color:rgba(255,255,255,.3)}
-    .service-title{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;color:var(--text-primary);transition:transform .3s}
-    .service-row:hover .service-title{transform:translateX(8px)}
-    .service-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.9}
-    @media(min-width:769px){.service-desc{max-width:50%;text-align:right}}
+    .service-row:hover{background:var(--glass-bg)}
+    .service-title{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;color:var(--text-primary)}
+    .service-content{font-size:.82rem;color:var(--text-secondary);line-height:1.75}
+    .service-content a{display:inline-block;margin-top:18px;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-primary)}
+    .service-content a:hover{color:var(--accent)}
+    @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.services-grid{grid-template-columns:1fr}.service-row{min-height:auto}}
 
     /* Why cards */
     .why-grid{display:grid;grid-template-columns:1fr 1fr}
@@ -249,9 +263,9 @@
     .start-project p{font-size:.75rem;color:var(--text-secondary);margin-top:24px}
     .start-project p a{text-decoration:underline}
     .start-project p a:hover{color:var(--text-primary)}
-    .prefer-english{margin-top:32px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary)}
-    .prefer-english a{text-decoration:underline;text-underline-offset:3px}
-    .prefer-english a:hover{color:var(--text-primary)}
+    .prefer-international{margin-top:32px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary)}
+    .prefer-international a{text-decoration:underline;text-underline-offset:3px}
+    .prefer-international a:hover{color:var(--text-primary)}
 
     /* Footer */
     footer{
@@ -277,6 +291,14 @@
     svg{display:inline-block;vertical-align:middle}
 
     .eyebrow{font-size:.6rem;letter-spacing:.4em;color:#444;text-transform:uppercase;margin-bottom:48px;display:block}
+
+    @media(max-width:520px){
+      body{letter-spacing:.035em}
+      .hero{height:auto;min-height:100vh;padding:120px 0 80px}
+      .hero-h1{font-size:2rem;letter-spacing:.14em}
+      .hero-credentials{font-size:.62rem;letter-spacing:.22em}
+      .btn-outline{width:100%;text-align:center;padding:16px 20px;letter-spacing:.16em}
+    }
   </style>
 </head>
 <body>
@@ -288,12 +310,16 @@
   <a href="#top" class="nav-logo" onclick="ss(event,'top')">WOLFBLANC</a>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="#om-studion" class="nav-link" onclick="ss(event,'om-studion')" data-s="om-studion">STUDIO</a>
-      <a href="#tjanster" class="nav-link" onclick="ss(event,'tjanster')" data-s="tjanster">TJÄNSTER</a>
-      <a href="#process" class="nav-link" onclick="ss(event,'process')" data-s="process">PROCESS</a>
-      <a href="#kontakt" class="nav-link" onclick="ss(event,'kontakt')" data-s="kontakt">KONTAKT</a>
+      <a href="#om-studion" class="nav-link" onclick="ss(event,'om-studion')" data-s="om-studion" data-sv="STUDIO" data-en="STUDIO">STUDIO</a>
+      <a href="#tjanster" class="nav-link" onclick="ss(event,'tjanster')" data-s="tjanster" data-sv="TJÄNSTER" data-en="SERVICES">TJÄNSTER</a>
+      <a href="#process" class="nav-link" onclick="ss(event,'process')" data-s="process" data-sv="PROCESS" data-en="PROCESS">PROCESS</a>
+      <a href="#kontakt" class="nav-link" onclick="ss(event,'kontakt')" data-s="kontakt" data-sv="KONTAKT" data-en="CONTACT">KONTAKT</a>
     </div>
-    <a href="#kontakt" class="nav-mobile-link" onclick="ss(event,'kontakt')">KONTAKT</a>
+    <a href="#kontakt" class="nav-mobile-link" onclick="ss(event,'kontakt')" data-sv="KONTAKT" data-en="CONTACT">KONTAKT</a>
+    <div class="language-switch" aria-label="Språkväljare">
+      <button class="lang-btn active" type="button" data-lang-switch="sv">SV</button>
+      <button class="lang-btn" type="button" data-lang-switch="en">EN</button>
+    </div>
     <button class="theme-btn" onclick="toggleTheme()" aria-label="Byt tema">
       <svg id="im" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg id="is" style="display:none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -304,15 +330,15 @@
 <!-- Hero -->
 <div id="top" class="wrap">
   <div class="hero">
-    <div class="hero-eyebrow">ARKITEKTUR & DESIGN</div>
+    <div class="hero-eyebrow" data-sv="ARKITEKTUR & DESIGN" data-en="ARCHITECTURE & DESIGN">ARKITEKTUR & DESIGN</div>
     <h1 class="hero-h1" id="hero-h1"></h1>
     <div class="hero-rule"></div>
-    <div class="hero-credentials">SAR/MSA Registrerad · WELL AP Certifierad · 20+ års erfarenhet</div>
-    <p class="hero-lead">Vi arbetar med bostäder, kommersiella projekt och stadsplanering med samma metodiska precision som byggde Sveriges mest ambitiösa bostadsprojekt.</p>
+    <div class="hero-credentials" data-sv="SAR/MSA Registrerad · WELL AP Certifierad · 20+ års erfarenhet" data-en="SAR/MSA Registered · WELL AP Certified · 20+ years of experience">SAR/MSA Registrerad · WELL AP Certifierad · 20+ års erfarenhet</div>
+    <p class="hero-lead" data-sv="Vi arbetar med bostäder, kommersiella projekt och stadsplanering med samma metodiska precision som byggde Sveriges mest ambitiösa bostadsprojekt." data-en="We work with homes, commercial projects, and urban planning with the same methodical precision behind some of Sweden's most ambitious residential projects.">Vi arbetar med bostäder, kommersiella projekt och stadsplanering med samma metodiska precision som byggde Sveriges mest ambitiösa bostadsprojekt.</p>
     <div class="hero-actions">
-      <a href="#kontakt" class="btn-outline" onclick="ss(event,'kontakt')">BOKA KOSTNADSFRITT SAMTAL</a>
+      <a href="#kontakt" class="btn-outline" onclick="ss(event,'kontakt')" data-sv="BOKA KOSTNADSFRITT SAMTAL" data-en="BOOK A FREE CALL">BOKA KOSTNADSFRITT SAMTAL</a>
       <a href="https://wolfblanc.com/sv/" target="_blank" rel="noopener noreferrer" class="text-link">
-        Se alla projekt
+        <span data-sv="Se alla projekt" data-en="View all projects">Se alla projekt</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
@@ -322,11 +348,11 @@
 <!-- Om Studion -->
 <div id="om-studion" class="wrap">
   <div class="section section-reveal">
-    <span class="eyebrow">OM STUDION</span>
+    <span class="eyebrow" data-sv="OM STUDION" data-en="ABOUT THE STUDIO">OM STUDION</span>
     <div class="studio-grid">
       <div>
-        <p style="color:var(--text-primary);margin-bottom:0">
-          Wolfblanc är ett arkitektur- och designkontor med representation i Stockholm, Madrid och Aten. Vi har 20 års samlad erfarenhet från bostadsprojekt, stadsplanering och kommersiella interiörer — med ett track record från Skandinaviens ledande byggherrar: Skanska, JM och Einar Mattsson. Vi tar med oss den nordiska precisionen och tillämpar den i varje projekt vi tar oss an, oavsett land eller skala.
+        <p style="color:var(--text-primary);margin-bottom:0" data-sv="Wolfblanc är ett arkitektur- och designkontor med representation i Stockholm, Madrid och Aten. Vi har 20 års samlad erfarenhet från bostadsprojekt, stadsplanering och kommersiella interiörer, med track record från Skandinaviens ledande byggherrar: Skanska, JM och Einar Mattsson. Vi tar med oss den nordiska precisionen och tillämpar den i varje projekt vi tar oss an, oavsett land eller skala." data-en="Wolfblanc is an architecture and design studio with presence in Stockholm, Madrid, and Athens. We have 20 years of combined experience in residential projects, urban planning, and commercial interiors, with a track record from leading Scandinavian developers including Skanska, JM, and Einar Mattsson. We bring Nordic precision to every project we take on, regardless of country or scale.">
+          Wolfblanc är ett arkitektur- och designkontor med representation i Stockholm, Madrid och Aten. Vi har 20 års samlad erfarenhet från bostadsprojekt, stadsplanering och kommersiella interiörer, med track record från Skandinaviens ledande byggherrar: Skanska, JM och Einar Mattsson. Vi tar med oss den nordiska precisionen och tillämpar den i varje projekt vi tar oss an, oavsett land eller skala.
         </p>
         <div class="studio-creds">
           <span>SAR/MSA</span><span>COAM N.25160</span>
@@ -343,31 +369,70 @@
 <!-- Tjänster -->
 <div id="tjanster" class="wrap">
   <div class="section section-reveal">
-    <span class="eyebrow">TJÄNSTER</span>
-    <div>
+    <span class="eyebrow" data-sv="TJÄNSTER" data-en="SERVICES">TJÄNSTER</span>
+    <div class="services-grid">
       <div class="service-row">
-        <div class="service-title">ARKITEKTUR & LANDSKAP</div>
-        <div class="service-desc">Byggnader och deras miljöer som ett integrerat system.</div>
+        <div class="service-title" data-sv="TEKNISK DUE DILIGENCE FÖRE FÖRVÄRV" data-en="PRE-ACQUISITION TECHNICAL DUE DILIGENCE">TEKNISK DUE DILIGENCE FÖRE FÖRVÄRV</div>
+        <div class="service-content">
+          <span data-sv="Vi hjälper köpare, investerare och family offices att förstå en fastighet innan de binder kapital. Vi bedömer rumslig potential, planrisk, tekniska begränsningar, renoveringsomfattning och möjligheter till värdeskapande." data-en="We help buyers, investors, and family offices understand a property before committing. We assess spatial potential, planning risk, technical constraints, renovation scope, and value-creation opportunities so decisions are made with clarity.">Vi hjälper köpare, investerare och family offices att förstå en fastighet innan de binder kapital. Vi bedömer rumslig potential, planrisk, tekniska begränsningar, renoveringsomfattning och möjligheter till värdeskapande.</span>
+          <br><a href="https://wolfblanc.com/pre-acquisition-technical-due-diligence-for-property-buyers/" target="_blank" rel="noopener noreferrer" data-sv="Se tjänst >" data-en="See service >">Se tjänst ></a>
+        </div>
       </div>
       <div class="service-row">
-        <div class="service-title">BOSTADSINTERIÖRER</div>
-        <div class="service-desc">Inomhusmiljöer anpassade till vardagligt bruk — ljus, material, atmosfär.</div>
+        <div class="service-title" data-sv="ARKITEKTUR & LANDSKAP" data-en="ARCHITECTURE & LANDSCAPE">ARKITEKTUR & LANDSKAP</div>
+        <div class="service-content">
+          <span data-sv="Vi utformar byggnader och deras miljöer som ett integrerat system. Från koncept till färdigställande balanserar vi rumslig klarhet, miljörespons och byggbarhet." data-en="We design buildings and their environments as one integrated system. From concept to completion, our work balances spatial clarity, environmental response, and buildability.">Vi utformar byggnader och deras miljöer som ett integrerat system. Från koncept till färdigställande balanserar vi rumslig klarhet, miljörespons och byggbarhet.</span>
+          <br><a href="https://wolfblanc.com/architecture-landscape/" target="_blank" rel="noopener noreferrer" data-sv="Se tjänst >" data-en="See service >">Se tjänst ></a>
+        </div>
       </div>
       <div class="service-row">
-        <div class="service-title">KOMMERSIELL STRATEGI & INTERIÖR</div>
-        <div class="service-desc">Högpresterande miljöer för varumärken och investerare — utförda genom vår specialiserade division EOLOS DESIGN LAB.</div>
+        <div class="service-title" data-sv="PROJEKTLEDNING / NYBYGGNAD / TOTALRENOVERING" data-en="PROJECT MANAGEMENT / NEW BUILD / TOTAL RENOVATION">PROJEKTLEDNING / NYBYGGNAD / TOTALRENOVERING</div>
+        <div class="service-content">
+          <span data-sv="Vi leder projekt med stark samordning, tydlig kommunikation och integrerade BIM-flöden, så att struktur, effektivitet och kvalitet säkras från idé till leverans." data-en="We lead projects with strong coordination, clear communication, and integrated BIM workflows, ensuring structure, efficiency, and quality from concept to completion.">Vi leder projekt med stark samordning, tydlig kommunikation och integrerade BIM-flöden, så att struktur, effektivitet och kvalitet säkras från idé till leverans.</span>
+          <br><a href="https://wolfblanc.com/project-management/" target="_blank" rel="noopener noreferrer" data-sv="Se tjänst >" data-en="See service >">Se tjänst ></a>
+        </div>
       </div>
       <div class="service-row">
-        <div class="service-title">PROJEKTLEDNING</div>
-        <div class="service-desc">BIM-driven koordination, tydlig kommunikation, kontroll från idé till leverans.</div>
+        <div class="service-title" data-sv="BOSTADSINTERIÖRER" data-en="RESIDENTIAL INTERIORS">BOSTADSINTERIÖRER</div>
+        <div class="service-content">
+          <span data-sv="Vi utformar inomhusmiljöer som fungerar och känns rätt. Varje rum anpassas till vardagligt bruk, med omsorg om ljus, material och atmosfär." data-en="We design interior environments that work and feel right. Each space is tailored to daily use, with attention to light, material, and atmosphere.">Vi utformar inomhusmiljöer som fungerar och känns rätt. Varje rum anpassas till vardagligt bruk, med omsorg om ljus, material och atmosfär.</span>
+          <br><a href="https://wolfblanc.com/residential-interiors/" target="_blank" rel="noopener noreferrer" data-sv="Se tjänst >" data-en="See service >">Se tjänst ></a>
+        </div>
       </div>
       <div class="service-row">
-        <div class="service-title">WELL AP KONSULTATION</div>
-        <div class="service-desc">Design för mänsklig prestation — luft, ljus, akustik, välmående.</div>
+        <div class="service-title" data-sv="KOMMERSIELL STRATEGI & INTERIÖR" data-en="COMMERCIAL STRATEGY & INTERIORS">KOMMERSIELL STRATEGI & INTERIÖR</div>
+        <div class="service-content">
+          <span data-sv="Vi designar högpresterande miljöer för varumärken och investerare. Från flexibla arbetsplatser och hospitality till showrooms och retailkoncept skapar EOLOS DESIGN LAB kommersiella interiörer där varumärke och drift möts." data-en="We design high-performance environments for brands and investors. From agile workspaces and hospitality venues to immersive showrooms and retail concepts, EOLOS DESIGN LAB creates commercial interiors that align brand identity with operational efficiency.">Vi designar högpresterande miljöer för varumärken och investerare. Från flexibla arbetsplatser och hospitality till showrooms och retailkoncept skapar EOLOS DESIGN LAB kommersiella interiörer där varumärke och drift möts.</span>
+          <br><a href="https://eolos.se/" target="_blank" rel="noopener noreferrer" data-sv="EOLOS SVERIGE >" data-en="EOLOS SWEDEN >">EOLOS SVERIGE ></a>
+        </div>
       </div>
       <div class="service-row">
-        <div class="service-title">BIM KONSULTATION</div>
-        <div class="service-desc">Digital precision i varje fas. Smartare beslut, färre risker.</div>
+        <div class="service-title" data-sv="STADSPLANERING & MASTERPLANNING" data-en="URBAN DESIGN & MASTERPLANNING">STADSPLANERING & MASTERPLANNING</div>
+        <div class="service-content">
+          <span data-sv="Vi planerar platser, stadsdelar och offentliga miljöer med tydlig rumslig strategi. Från tidig genomförbarhet till masterplans och offentliga rum kopplar vi samman täthet, rörelse, landskap och långsiktigt värde." data-en="We plan sites, districts, and public environments with a clear spatial strategy. From early feasibility to masterplans and public realm concepts, our work connects density, movement, landscape, and long-term value.">Vi planerar platser, stadsdelar och offentliga miljöer med tydlig rumslig strategi. Från tidig genomförbarhet till masterplans och offentliga rum kopplar vi samman täthet, rörelse, landskap och långsiktigt värde.</span>
+          <br><a href="https://wolfblanc.com/urban-design-masterplanning/" target="_blank" rel="noopener noreferrer" data-sv="Se tjänst >" data-en="See service >">Se tjänst ></a>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-title" data-sv="BIM-KONSULTATION" data-en="BIM CONSULTANCY">BIM-KONSULTATION</div>
+        <div class="service-content">
+          <span data-sv="Digital precision i varje fas. Med omfattande erfarenhet som BIM managers förbättrar vi samordning, minskar risk och gör projektdatan till ett verktyg för smartare beslut." data-en="Digital precision at every stage. With extensive experience as BIM managers, we streamline coordination, reduce risk, and improve collaboration between disciplines.">Digital precision i varje fas. Med omfattande erfarenhet som BIM managers förbättrar vi samordning, minskar risk och gör projektdatan till ett verktyg för smartare beslut.</span>
+          <br><a href="https://wolfblanc.com/bim-consultancy/" target="_blank" rel="noopener noreferrer" data-sv="Se tjänst >" data-en="See service >">Se tjänst ></a>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-title" data-sv="VÄLBEFINNANDEKONSULTATION" data-en="WELL-BEING CONSULTANCY">VÄLBEFINNANDEKONSULTATION</div>
+        <div class="service-content">
+          <span data-sv="Vi designar för mänsklig prestation och hälsa. Som WELL AP-konsulter mäter och optimerar vi luft, ljus, akustik och komfort genom evidensbaserad design." data-en="We design for human performance and health. As WELL AP consultants, we measure and optimize air, light, acoustics, and comfort through evidence-based design.">Vi designar för mänsklig prestation och hälsa. Som WELL AP-konsulter mäter och optimerar vi luft, ljus, akustik och komfort genom evidensbaserad design.</span>
+          <br><a href="https://wolfblanc.com/well-being-consultancy/" target="_blank" rel="noopener noreferrer" data-sv="Se tjänst >" data-en="See service >">Se tjänst ></a>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-title" data-sv="ARKITEKTONISK VISUALISERING" data-en="ARCHITECTURAL VISUALIZATION">ARKITEKTONISK VISUALISERING</div>
+        <div class="service-content">
+          <span data-sv="Vi omvandlar designidéer till tydligt visuellt material för beslut, tillstånd, försäljning och investerarkommunikation. Bilder, konceptstudier, animationer och staging hjälper kunder att förstå värde innan byggstart." data-en="We turn design ideas into clear visual material for decisions, permits, sales, and investor communication. From still images and concept studies to animations and staging, visualization helps clients understand value before construction begins.">Vi omvandlar designidéer till tydligt visuellt material för beslut, tillstånd, försäljning och investerarkommunikation. Bilder, konceptstudier, animationer och staging hjälper kunder att förstå värde innan byggstart.</span>
+          <br><a href="https://wolfblanc.com/visualization/" target="_blank" rel="noopener noreferrer" data-sv="Se tjänst >" data-en="See service >">Se tjänst ></a>
+        </div>
       </div>
     </div>
   </div>
@@ -376,23 +441,23 @@
 <!-- Varför Wolfblanc -->
 <div class="wrap">
   <div class="section section-reveal">
-    <span class="eyebrow">VARFÖR WOLFBLANC</span>
+    <span class="eyebrow" data-sv="VARFÖR WOLFBLANC" data-en="WHY WOLFBLANC">VARFÖR WOLFBLANC</span>
     <div class="why-grid">
       <div class="why-card">
-        <div class="why-title">SAR/MSA REGISTRERAD</div>
-        <p class="why-desc">Licensierad och registrerad för arkitektuppdrag i Sverige.</p>
+        <div class="why-title" data-sv="SAR/MSA REGISTRERAD" data-en="SAR/MSA REGISTERED">SAR/MSA REGISTRERAD</div>
+        <p class="why-desc" data-sv="Licensierad och registrerad för arkitektuppdrag i Sverige." data-en="Licensed and registered for architectural assignments in Sweden.">Licensierad och registrerad för arkitektuppdrag i Sverige.</p>
       </div>
       <div class="why-card">
-        <div class="why-title">WELL AP CERTIFIERAD</div>
-        <p class="why-desc">Certifierad kompetens i hälsofrämjande byggnadsstandarder.</p>
+        <div class="why-title" data-sv="WELL AP CERTIFIERAD" data-en="WELL AP CERTIFIED">WELL AP CERTIFIERAD</div>
+        <p class="why-desc" data-sv="Certifierad kompetens i hälsofrämjande byggnadsstandarder." data-en="Certified expertise in health-focused building standards.">Certifierad kompetens i hälsofrämjande byggnadsstandarder.</p>
       </div>
       <div class="why-card">
-        <div class="why-title">NORDISK PRECISION</div>
-        <p class="why-desc">Bevisad erfarenhet från Skandinaviens kravställande marknad.</p>
+        <div class="why-title" data-sv="NORDISK PRECISION" data-en="NORDIC PRECISION">NORDISK PRECISION</div>
+        <p class="why-desc" data-sv="Bevisad erfarenhet från Skandinaviens kravställande marknad." data-en="Proven experience from Scandinavia's demanding building market.">Bevisad erfarenhet från Skandinaviens kravställande marknad.</p>
       </div>
       <div class="why-card">
-        <div class="why-title">FLERSPRÅKIG SERVICE</div>
-        <p class="why-desc">Vi kommunicerar på svenska, engelska, spanska och grekiska.</p>
+        <div class="why-title" data-sv="FLERSPRÅKIG SERVICE" data-en="MULTILINGUAL SERVICE">FLERSPRÅKIG SERVICE</div>
+        <p class="why-desc" data-sv="Vi kommunicerar på svenska, engelska, spanska och grekiska." data-en="We communicate in Swedish, English, Spanish, and Greek.">Vi kommunicerar på svenska, engelska, spanska och grekiska.</p>
       </div>
     </div>
   </div>
@@ -401,23 +466,23 @@
 <!-- Process -->
 <div id="process" class="wrap">
   <div class="section section-reveal">
-    <span class="eyebrow">PROCESS</span>
+    <span class="eyebrow" data-sv="PROCESS" data-en="PROCESS">PROCESS</span>
     <div>
       <div class="process-row">
         <div class="process-num">01</div>
-        <div><div class="process-title">LYSSNA</div><p class="process-desc">Vi förstår ditt projekt, dina behov, budget och möjligheter.</p></div>
+        <div><div class="process-title" data-sv="LYSSNA" data-en="LISTEN">LYSSNA</div><p class="process-desc" data-sv="Vi förstår ditt projekt, dina behov, budget och möjligheter." data-en="We understand your project, needs, budget, and possibilities.">Vi förstår ditt projekt, dina behov, budget och möjligheter.</p></div>
       </div>
       <div class="process-row">
         <div class="process-num">02</div>
-        <div><div class="process-title">DESIGNA</div><p class="process-desc">Vi utvecklar och visualiserar det arkitektoniska konceptet.</p></div>
+        <div><div class="process-title" data-sv="DESIGNA" data-en="DESIGN">DESIGNA</div><p class="process-desc" data-sv="Vi utvecklar och visualiserar det arkitektoniska konceptet." data-en="We develop and visualize the architectural concept.">Vi utvecklar och visualiserar det arkitektoniska konceptet.</p></div>
       </div>
       <div class="process-row">
         <div class="process-num">03</div>
-        <div><div class="process-title">PLANERA</div><p class="process-desc">Vi upprättar alla ritningar, detaljer och konstruktionsbeslut.</p></div>
+        <div><div class="process-title" data-sv="PLANERA" data-en="PLAN">PLANERA</div><p class="process-desc" data-sv="Vi upprättar alla ritningar, detaljer och konstruktionsbeslut." data-en="We prepare drawings, details, and construction decisions.">Vi upprättar alla ritningar, detaljer och konstruktionsbeslut.</p></div>
       </div>
       <div class="process-row">
         <div class="process-num">04</div>
-        <div><div class="process-title">BYGGA</div><p class="process-desc">Vi följer projektet genom utförande och färdigställande.</p></div>
+        <div><div class="process-title" data-sv="BYGGA" data-en="BUILD">BYGGA</div><p class="process-desc" data-sv="Vi följer projektet genom utförande och färdigställande." data-en="We follow the project through execution and completion.">Vi följer projektet genom utförande och färdigställande.</p></div>
       </div>
     </div>
   </div>
@@ -426,34 +491,34 @@
 <!-- Testimonial -->
 <div class="wrap">
   <div class="testimonial section-reveal">
-    <blockquote>
-      "Vårt fritidshus kombinerar nordisk enkelhet med medelhavets ljus — precis vad vi hoppades på när vi bestämde oss för att flytta."
+    <blockquote data-sv='"Vårt fritidshus kombinerar nordisk enkelhet med medelhavets ljus, precis vad vi hoppades på när vi bestämde oss för att flytta."' data-en='"Our second home combines Nordic simplicity with Mediterranean light, exactly what we hoped for when we decided to move."'>
+      "Vårt fritidshus kombinerar nordisk enkelhet med medelhavets ljus, precis vad vi hoppades på när vi bestämde oss för att flytta."
     </blockquote>
-    <cite>— JONAS ANDERSSON & EMILIA NILSSON · HUSÄGARE</cite>
+    <cite data-sv="— JONAS ANDERSSON & EMILIA NILSSON · HUSÄGARE" data-en="— JONAS ANDERSSON & EMILIA NILSSON · HOMEOWNERS">— JONAS ANDERSSON & EMILIA NILSSON · HUSÄGARE</cite>
   </div>
 </div>
 
 <!-- Specialiserade Tjänster -->
 <div class="wrap">
   <div class="section section-reveal">
-    <span class="eyebrow">VÅR ERBJUDANDE</span>
-    <h2 style="font-size:1.5rem;margin-bottom:48px">Specialiserade Tjänster</h2>
+    <span class="eyebrow" data-sv="VÅRT ERBJUDANDE" data-en="OUR OFFER">VÅRT ERBJUDANDE</span>
+    <h2 style="font-size:1.5rem;margin-bottom:48px" data-sv="Specialiserade Tjänster" data-en="Specialized Services">Specialiserade Tjänster</h2>
     <div class="spec-grid">
       <a href="https://wolfblanc.com/sv/portfolio/for-investors/" target="_blank" rel="noopener noreferrer" class="spec-card">
-        <div><div class="spec-title">FÖR INVESTERARE</div><p class="spec-desc">Strategisk arkitektur för fastighetsinvesteringar med mätbart ROI.</p></div>
-        <div class="spec-more">Läs mer <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div><div class="spec-title" data-sv="FÖR INVESTERARE" data-en="FOR INVESTORS">FÖR INVESTERARE</div><p class="spec-desc" data-sv="Strategisk arkitektur för fastighetsinvesteringar med mätbart ROI." data-en="Strategic architecture for property investments with measurable ROI.">Strategisk arkitektur för fastighetsinvesteringar med mätbart ROI.</p></div>
+        <div class="spec-more"><span data-sv="Läs mer" data-en="Read more">Läs mer</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       </a>
       <a href="https://wolfblanc.com/sv/portfolio/for-homeowners/" target="_blank" rel="noopener noreferrer" class="spec-card">
-        <div><div class="spec-title">FÖR HUSÄGARE</div><p class="spec-desc">Skräddarsydd renovering och bostadsdesign med nordisk precision.</p></div>
-        <div class="spec-more">Läs mer <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div><div class="spec-title" data-sv="FÖR HUSÄGARE" data-en="FOR HOMEOWNERS">FÖR HUSÄGARE</div><p class="spec-desc" data-sv="Skräddarsydd renovering och bostadsdesign med nordisk precision." data-en="Tailored renovation and residential design with Nordic precision.">Skräddarsydd renovering och bostadsdesign med nordisk precision.</p></div>
+        <div class="spec-more"><span data-sv="Läs mer" data-en="Read more">Läs mer</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       </a>
       <a href="https://wolfblanc.com/sv/portfolio/second-homes-spain/" target="_blank" rel="noopener noreferrer" class="spec-card">
-        <div><div class="spec-title">FRITIDSHUS & ANDRABOSTAD I SPANIEN OCH GREKLAND</div><p class="spec-desc">Din drömvilla i Spanien och Grekland — designad, tillståndssökt och levererad av Wolfblanc.</p></div>
-        <div class="spec-more">Läs mer <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div><div class="spec-title" data-sv="FRITIDSHUS & ANDRABOSTAD I SPANIEN OCH GREKLAND" data-en="SECOND HOMES IN SPAIN AND GREECE">FRITIDSHUS & ANDRABOSTAD I SPANIEN OCH GREKLAND</div><p class="spec-desc" data-sv="Din villa i Spanien och Grekland, designad, tillståndssökt och levererad av Wolfblanc." data-en="Your villa in Spain or Greece, designed, permitted, and delivered by Wolfblanc.">Din villa i Spanien och Grekland, designad, tillståndssökt och levererad av Wolfblanc.</p></div>
+        <div class="spec-more"><span data-sv="Läs mer" data-en="Read more">Läs mer</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       </a>
       <a href="https://wolfblanc.com/sv/portfolio/why-wolfblanc/" target="_blank" rel="noopener noreferrer" class="spec-card">
-        <div><div class="spec-title">VARFÖR WOLFBLANC?</div><p class="spec-desc">Vad som skiljer oss från andra arkitektkontor.</p></div>
-        <div class="spec-more">Läs mer <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div><div class="spec-title" data-sv="VARFÖR WOLFBLANC?" data-en="WHY WOLFBLANC?">VARFÖR WOLFBLANC?</div><p class="spec-desc" data-sv="Vad som skiljer oss från andra arkitektkontor." data-en="What makes us different from other architecture studios.">Vad som skiljer oss från andra arkitektkontor.</p></div>
+        <div class="spec-more"><span data-sv="Läs mer" data-en="Read more">Läs mer</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       </a>
     </div>
   </div>
@@ -462,15 +527,15 @@
 <!-- Portfolio CTA -->
 <div class="wrap">
   <div class="proj-cta section-reveal">
-    <p>Tjugo projekt. Tre länder. En metodik.</p>
-    <a href="https://wolfblanc.com/sv/" target="_blank" rel="noopener noreferrer" class="btn-outline">SE ALLA PROJEKT →</a>
+    <p data-sv="Tjugo projekt. Tre länder. En metodik." data-en="Twenty projects. Three countries. One methodology.">Tjugo projekt. Tre länder. En metodik.</p>
+    <a href="https://wolfblanc.com/sv/" target="_blank" rel="noopener noreferrer" class="btn-outline" data-sv="SE ALLA PROJEKT →" data-en="VIEW ALL PROJECTS →">SE ALLA PROJEKT →</a>
   </div>
 </div>
 
 <!-- Kontakt -->
 <div id="kontakt" class="wrap">
   <div class="section section-reveal">
-    <span class="eyebrow">KONTAKT</span>
+    <span class="eyebrow" data-sv="KONTAKT" data-en="CONTACT">KONTAKT</span>
     <div class="contact-grid">
       <div>
         <div class="contact-label">WOLFBLANC ARCHITECTS</div>
@@ -486,14 +551,14 @@
           <a href="mailto:dolores@wolfblanc.com" class="contact-email">dolores@wolfblanc.com</a>
         </div>
         <div class="contact-socials">
-          <a href="https://instagram.com/wolfblanc.architects" target="_blank" rel="noopener noreferrer" class="contact-social">
+          <a href="https://instagram.com/wolfblanc.architects" target="_blank" rel="noopener noreferrer" class="contact-social" aria-label="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
-          <a href="https://linkedin.com/company/wolfblanc" target="_blank" rel="noopener noreferrer" class="contact-social">
+          <a href="https://linkedin.com/company/wolfblanc" target="_blank" rel="noopener noreferrer" class="contact-social" aria-label="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
-        <p class="contact-lang">Vi svarar på svenska, engelska, spanska och grekiska.</p>
+        <p class="contact-lang" data-sv="Vi svarar på svenska, engelska, spanska och grekiska." data-en="We respond in Swedish, English, Spanish, and Greek.">Vi svarar på svenska, engelska, spanska och grekiska.</p>
       </div>
     </div>
 
@@ -502,17 +567,17 @@
     </div>
 
     <div class="start-project">
-      <h3>Starta ditt projekt</h3>
-      <a href="mailto:dolores@wolfblanc.com" class="btn-outline">STARTA DITT PROJEKT</a>
-      <p>Eller kontakta oss direkt på <a href="mailto:dolores@wolfblanc.com">dolores@wolfblanc.com</a></p>
-      <p class="prefer-english">Prefer English? <a href="https://wolfblanc.com" target="_blank" rel="noopener">Visit wolfblanc.com →</a></p>
+      <h3 data-sv="Starta ditt projekt" data-en="Start your project">Starta ditt projekt</h3>
+      <a href="mailto:dolores@wolfblanc.com" class="btn-outline" data-sv="STARTA DITT PROJEKT" data-en="START YOUR PROJECT">STARTA DITT PROJEKT</a>
+      <p data-sv='Eller kontakta oss direkt på <a href="mailto:dolores@wolfblanc.com">dolores@wolfblanc.com</a>' data-en='Or contact us directly at <a href="mailto:dolores@wolfblanc.com">dolores@wolfblanc.com</a>'>Eller kontakta oss direkt på <a href="mailto:dolores@wolfblanc.com">dolores@wolfblanc.com</a></p>
+      <p class="prefer-international" data-sv='Prefer the international site? <a href="https://wolfblanc.com" target="_blank" rel="noopener">Visit wolfblanc.com →</a>' data-en='Prefer the international site? <a href="https://wolfblanc.com" target="_blank" rel="noopener">Visit wolfblanc.com →</a>'>Prefer the international site? <a href="https://wolfblanc.com" target="_blank" rel="noopener">Visit wolfblanc.com →</a></p>
     </div>
   </div>
 </div>
 
 <!-- Footer -->
 <footer>
-  <span>WOLFBLANC® ARCHITECTS · Stockholm · Sverige · © 2026</span>
+  <span data-sv="WOLFBLANC® ARCHITECTS · Stockholm · Sverige · © 2026" data-en="WOLFBLANC® ARCHITECTS · Stockholm · Sweden · © 2026">WOLFBLANC® ARCHITECTS · Stockholm · Sverige · © 2026</span>
   <a href="https://wolfblanc.com" target="_blank" rel="noopener noreferrer" class="footer-link">wolfblanc.com</a>
 </footer>
 
@@ -531,27 +596,56 @@
   function hide(id){ const e=document.getElementById(id); if(e) e.style.display='none'; }
   function toggleTheme(){ dark=!dark; dark?applyDark():applyLight(); localStorage.setItem('theme',dark?'dark':'light'); }
 
+  // Language
+  const langButtons = document.querySelectorAll('[data-lang-switch]');
+  const heroLines = {
+    sv: ['NORDISK ARKITEKTUR.', 'INTERNATIONELL', 'ERFARENHET.'],
+    en: ['NORDIC ARCHITECTURE.', 'INTERNATIONAL', 'EXPERIENCE.']
+  };
+
+  function renderHero(lang){
+    const h1 = document.getElementById('hero-h1');
+    h1.innerHTML = '';
+    let delay = 0;
+    heroLines[lang].forEach(line => {
+      const span = document.createElement('span');
+      span.style.display = 'block';
+      line.split(' ').forEach(word => {
+        const w = document.createElement('span');
+        w.className = 'word';
+        w.textContent = word;
+        w.style.animationDelay = delay + 's';
+        w.style.marginRight = '.2em';
+        span.appendChild(w);
+        delay += 0.15;
+      });
+      h1.appendChild(span);
+    });
+  }
+
+  function setLanguage(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-sv][data-en]').forEach(el => {
+      el.innerHTML = el.dataset[lang];
+    });
+    langButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.langSwitch === lang);
+    });
+    const themeButton = document.querySelector('.theme-btn');
+    if (themeButton) themeButton.setAttribute('aria-label', lang === 'sv' ? 'Byt tema' : 'Toggle theme');
+    const bttButton = document.getElementById('btt');
+    if (bttButton) bttButton.setAttribute('aria-label', lang === 'sv' ? 'Tillbaka till toppen' : 'Back to top');
+    renderHero(lang);
+    localStorage.setItem('wb-se-lang', lang);
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.langSwitch));
+  });
+  setLanguage(localStorage.getItem('wb-se-lang') || 'sv');
+
   // Smooth scroll
   function ss(e, id){ e.preventDefault(); const el=document.getElementById(id); if(el) window.scrollTo({top:el.offsetTop-72,behavior:'smooth'}); }
-
-  // Hero text animation
-  const lines = ["NORDISK ARKITEKTUR.", "INTERNATIONELL", "ERFARENHET."];
-  const h1 = document.getElementById('hero-h1');
-  let delay = 0;
-  lines.forEach(line => {
-    const span = document.createElement('span');
-    span.style.display = 'block';
-    line.split(' ').forEach(word => {
-      const w = document.createElement('span');
-      w.className = 'word';
-      w.textContent = word;
-      w.style.animationDelay = delay + 's';
-      w.style.marginRight = '.2em';
-      span.appendChild(w);
-      delay += 0.15;
-    });
-    h1.appendChild(span);
-  });
 
   // Nav scroll + active link
   const nav = document.getElementById('nav');
@@ -575,7 +669,7 @@
   }, {threshold: 0.1});
   document.querySelectorAll('.section-reveal').forEach(el => revealObserver.observe(el));
 
-  // Cursor — always-running RAF loop, left/top positioning
+  // Cursor
   const dot = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
   let mouseX=0, mouseY=0, ringX=0, ringY=0;
